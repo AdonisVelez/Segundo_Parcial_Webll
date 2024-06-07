@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAllTablas = exports.deleteRegistro = exports.updateRegistro = exports.createRegistro = exports.getRegistroById = exports.getAllRegistros = exports.deletePersona = exports.updatePersona = exports.createPersona = exports.getPersonaById = exports.getAllPersonas = exports.deleteEncuesta = exports.updateEncuesta = exports.createEncuesta = exports.getEncuestaById = exports.getAllEncuestas = void 0;
+exports.deleteRegistro = exports.updateRegistro = exports.createRegistro = exports.getRegistroById = exports.getAllRegistros = exports.deletePersona = exports.updatePersona = exports.createPersona = exports.getPersonaById = exports.getAllPersonas = exports.deleteEncuesta = exports.updateEncuesta = exports.createEncuesta = exports.getEncuestaById = exports.getAllEncuestas = void 0;
 var encuestaController_1 = require("./encuestaController");
 Object.defineProperty(exports, "getAllEncuestas", { enumerable: true, get: function () { return encuestaController_1.getAllEncuestas; } });
 Object.defineProperty(exports, "getEncuestaById", { enumerable: true, get: function () { return encuestaController_1.getEncuestaById; } });
@@ -19,5 +19,3 @@ Object.defineProperty(exports, "getRegistroById", { enumerable: true, get: funct
 Object.defineProperty(exports, "createRegistro", { enumerable: true, get: function () { return registroController_1.createRegistro; } });
 Object.defineProperty(exports, "updateRegistro", { enumerable: true, get: function () { return registroController_1.updateRegistro; } });
 Object.defineProperty(exports, "deleteRegistro", { enumerable: true, get: function () { return registroController_1.deleteRegistro; } });
-var maestraController_1 = require("./maestraController");
-Object.defineProperty(exports, "getAllTablas", { enumerable: true, get: function () { return maestraController_1.getAllTablas; } });

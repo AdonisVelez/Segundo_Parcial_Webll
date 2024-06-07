@@ -11,5 +11,4 @@ router.use('/encuestas', encuestaRoutes);
 router.use('/registros', registroRoutes);
 router.use('/maestra', maestraRoutes);
 
-
 export default router;

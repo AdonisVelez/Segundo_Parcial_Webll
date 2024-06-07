@@ -8,20 +8,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getAllTablas = void 0;
-const index_1 = require("../services/index");
+const httpClient_1 = __importDefault(require("../utils/httpClient"));
 // URL del servicio REST de tu compañero
-const externalServiceURL = 'http://10.42.0.1:3011/api/control';
+const externalServiceURL = 'http://10.42.3.252:3020/api/controles';
 // Controlador para obtener los datos desde el servicio REST de tu compañero
-const getAllTablas = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const getAllTablas = (resq, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log('Recibida solicitud para obtener todas las tablas');
     try {
-        const response = yield index_1.httpClient.get(externalServiceURL);
-        res.json(response.data);
+        const data = yield httpClient_1.default.get(externalServiceURL);
+        console.log('Datos recibidos del servicio externo:', data);
+        res.status(200).json(data);
     }
     catch (error) {
         console.error('Error al obtener datos del servicio externo:', error);
-        res.status(500).json({ message: 'Error al obtener datos del servicio externo' });
+        res.status(500).json({ message: 'Error al obtener datos del servicio externo XD' });
     }
 });
 exports.getAllTablas = getAllTablas;
