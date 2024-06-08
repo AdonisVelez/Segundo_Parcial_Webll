@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import  {axiosClient, fetchClient} from "../utils/httpClient";
 
 // URL del servicio REST de tu compañero
-const externalServiceURL = 'https://7fba-102-177-174-88.ngrok-free.app/cocineros';
+const externalServiceURL = 'http://10.42.3.252:3020/api/controles';
 
 // Controlador para obtener los datos desde el servicio REST de tu compañero
 export const getAllTablas = async (req: Request, res: Response) => {
