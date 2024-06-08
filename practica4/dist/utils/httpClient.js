@@ -12,14 +12,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.fetchClient = exports.axiosClient = void 0;
 const axios_1 = __importDefault(require("axios"));
 const node_fetch_1 = __importDefault(require("node-fetch"));
 const axiosClient = {
     get: (url) => __awaiter(void 0, void 0, void 0, function* () {
-        console.log(`Making request to ${url} with axios`);
+        console.log(`Haciendo solicitud a ${url} con axios`);
         try {
             const response = yield axios_1.default.get(url);
-            console.log('Response received:', response.data);
+            console.log('Respuesta recibida con axios:', response.data);
             return response.data;
         }
         catch (error) {
@@ -28,16 +29,17 @@ const axiosClient = {
         }
     })
 };
+exports.axiosClient = axiosClient;
 const fetchClient = {
     get: (url) => __awaiter(void 0, void 0, void 0, function* () {
-        console.log(`Making request to ${url} with fetch`);
+        console.log(`Haciendo solicitud a ${url} con fetch`);
         try {
             const response = yield (0, node_fetch_1.default)(url);
             if (!response.ok) {
                 throw new Error('Error al obtener datos del servicio externo con fetch');
             }
             const data = yield response.json();
-            console.log('Response received:', data);
+            console.log('Respuesta recibida con fetch:', data);
             return data;
         }
         catch (error) {
@@ -46,5 +48,4 @@ const fetchClient = {
         }
     })
 };
-const httpClient = process.env.HTTP_CLIENT === 'fetch' ? fetchClient : axiosClient;
-exports.default = httpClient;
+exports.fetchClient = fetchClient;

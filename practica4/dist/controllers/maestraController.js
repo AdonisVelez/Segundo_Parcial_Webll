@@ -8,25 +8,32 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getAllTablas = void 0;
-const httpClient_1 = __importDefault(require("../utils/httpClient"));
+const httpClient_1 = require("../utils/httpClient");
 // URL del servicio REST de tu compañero
-const externalServiceURL = 'http://10.42.3.252:3020/api/controles';
+const externalServiceURL = 'https://7fba-102-177-174-88.ngrok-free.app/cocineros';
 // Controlador para obtener los datos desde el servicio REST de tu compañero
-const getAllTablas = (resq, res) => __awaiter(void 0, void 0, void 0, function* () {
+const getAllTablas = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     console.log('Recibida solicitud para obtener todas las tablas');
     try {
-        const data = yield httpClient_1.default.get(externalServiceURL);
-        console.log('Datos recibidos del servicio externo:', data);
-        res.status(200).json(data);
+        // Realizar solicitudes simultáneas a través de axios y fetch
+        const [axiosData, fetchData] = yield Promise.all([
+            httpClient_1.axiosClient.get(externalServiceURL),
+            httpClient_1.fetchClient.get(externalServiceURL)
+        ]);
+        console.log('Datos recibidos del servicio externo con axios:', axiosData);
+        console.log('Datos recibidos del servicio externo con fetch:', fetchData);
+        // Combinar las respuestas
+        const combinedData = {
+            axiosData,
+            fetchData
+        };
+        res.status(200).json(combinedData);
     }
     catch (error) {
         console.error('Error al obtener datos del servicio externo:', error);
-        res.status(500).json({ message: 'Error al obtener datos del servicio externo XD' });
+        res.status(500).json({ message: 'Error al obtener datos del servicio externo' });
     }
 });
 exports.getAllTablas = getAllTablas;

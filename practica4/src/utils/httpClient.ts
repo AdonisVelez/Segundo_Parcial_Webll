@@ -7,10 +7,10 @@ type HttpClient = {
 
 const axiosClient: HttpClient = {
   get: async (url: string) => {
-    console.log(`Making request to ${url} with axios`);
+    console.log(`Haciendo solicitud a ${url} con axios`);
     try {
       const response = await axios.get(url);
-      console.log('Response received:', response.data);
+      console.log('Respuesta recibida con axios:', response.data);
       return response.data;
     } catch (error) {
       console.error('Error al obtener datos del servicio externo con axios:', error);
@@ -21,14 +21,14 @@ const axiosClient: HttpClient = {
 
 const fetchClient: HttpClient = {
   get: async (url: string) => {
-    console.log(`Making request to ${url} with fetch`);
+    console.log(`Haciendo solicitud a ${url} con fetch`);
     try {
       const response = await fetch(url);
       if (!response.ok) {
         throw new Error('Error al obtener datos del servicio externo con fetch');
       }
       const data = await response.json();
-      console.log('Response received:', data);
+      console.log('Respuesta recibida con fetch:', data);
       return data;
     } catch (error) {
       console.error('Error al obtener datos del servicio externo con fetch:', error);
@@ -37,6 +37,4 @@ const fetchClient: HttpClient = {
   }
 };
 
-const httpClient: HttpClient = process.env.HTTP_CLIENT === 'fetch' ? fetchClient : axiosClient;
-
-export default httpClient;
+export { axiosClient, fetchClient };
