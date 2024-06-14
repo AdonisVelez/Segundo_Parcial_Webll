@@ -1,75 +1,73 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Login Form</title>
+    <title>Sales Dashboard</title>
     <style>
+        /* CSS styling for the sales dashboard */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
         }
 
         .container {
-            max-width: 400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        .container h2 {
+        h1 {
             text-align: center;
+        }
+
+        .sales-chart {
+            width: 100%;
+            height: 400px;
+            background-color: #f2f2f2;
             margin-bottom: 20px;
         }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .form-group input {
+        .sales-table {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            border-collapse: collapse;
         }
 
-        .form-group button {
-            width: 100%;
+        .sales-table th,
+        .sales-table td {
             padding: 10px;
-            background-color: #4CAF50;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
         }
 
-        .form-group button:hover {
-            background-color: #45a049;
+        .sales-table th {
+            background-color: #f2f2f2;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <h2>Login Form</h2>
-        <form>
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" placeholder="Ingrese su usuario">
-            </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" placeholder="Ingrese su contraseña">
-            </div>
-            <div class="form-group">
-                <button type="submit">Login</button>
-            </div>
-        </form>
+        <h1>Sales Dashboard</h1>
+
+        <div class="sales-chart">
+            <!-- Sales chart goes here -->
+        </div>
+
+        <table class="sales-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Revenue</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Sales data goes here -->
+            </tbody>
+        </table>
     </div>
 </body>
+
 </html>

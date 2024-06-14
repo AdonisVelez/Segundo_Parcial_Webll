@@ -4,7 +4,7 @@ export class UpdatePersonaDto {
     private constructor(
       public readonly id: number,
       public readonly nombre?: string,
-      public readonly identificacion?: number,
+      public readonly identificacion?: string,
     ){}
   
     get values() {
@@ -39,8 +39,8 @@ export class UpdatePersonaDto {
 
       if (identificacion) {
         newIdentificacion = identificacion.trim();
-        if (!/^\d{10}$/.test(newIdentificacion)) {
-          return ['Se requiere 10 números para identificacion'];
+        if ( newIdentificacion !== identificacion ) {
+          return ['Se requieren un valor correcto para identificacion'];
         }
       }  
   

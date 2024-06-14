@@ -13,7 +13,7 @@ export class CreateRegistroDto {
   
       const { ubicacion, personaId, encuestaId } = props;
   
-      if ( !ubicacion ) return ['Nombre es requerido', undefined];
+      if ( !ubicacion ) return ['Ubicacion es requerido', undefined];
       if ( !personaId ) return ['id_persona  es requerido', undefined];
       if ( !encuestaId ) return ['id_encuesta es requerido', undefined];
   

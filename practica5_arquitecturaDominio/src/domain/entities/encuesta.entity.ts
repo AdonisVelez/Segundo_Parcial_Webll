@@ -14,23 +14,7 @@ export class EncuestaEntity {
       const { id, descripcion, detalle} = object;
       if ( !id ) throw 'Id es requerido';
       if ( !descripcion ) throw 'descripcion es requerido';
-      if ( !detalle ) throw 'detalle es requerido';
-  
-      let newDescripcion;
-      if ( descripcion ) {
-        newDescripcion = descripcion.toUpperCase();
-        if (  newDescripcion !== descripcion  ) {
-          throw 'La Descripcion debe estar en mayúscula.'
-        }
-      }
 
-      let newDetalle;
-      if ( detalle ) {
-        newDetalle = detalle.toUpperCase();
-        if (  newDetalle !== detalle ) {
-          throw 'El detalle debe estar en mayúscula.'
-        }
-      }
       return new EncuestaEntity(id, descripcion, detalle)
 
     }

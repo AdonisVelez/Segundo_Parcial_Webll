@@ -11,8 +11,7 @@ export class CreateEncuestaDto {
       const { descripcion, detalles } = props;
   
       if ( !descripcion ) return ['descripcion es requerido', undefined];
-      if ( !detalles ) return ['detalle es requerida', undefined];
-  
+      if ( !detalles ) return ['detalle es requerido', undefined];
   
       return [undefined, new CreateEncuestaDto(descripcion, detalles)];
   }

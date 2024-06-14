@@ -18,14 +18,7 @@ export class RegistroEntity {
       const { id, ubicacion} = object;
       if ( !id ) throw 'Id es requerido';
       if ( !ubicacion ) throw 'Ubicacion es requerido';
-  
-      let newUbicacion;
-      if ( ubicacion ) {
-        newUbicacion = ubicacion.toUpperCase();
-        if (  newUbicacion !== ubicacion  ) {
-          throw 'La ubicacion debe ser valida.'
-        }
-      }
+
 
       return new RegistroEntity(id, ubicacion)
 

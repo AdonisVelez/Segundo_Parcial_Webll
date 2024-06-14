@@ -2,7 +2,7 @@ export class CreatePersonaDto {
 
     private constructor(
       public readonly nombre: string,
-      public readonly identificacion: number,
+      public readonly identificacion: string,
     ){}
   
   

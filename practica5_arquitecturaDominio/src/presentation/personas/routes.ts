@@ -1,6 +1,7 @@
 import { Router } from 'express';
-import { PersonasController } from './personasController';
-
+import { PersonasController } from './controller';
+import { PersonaDatasourceImpl } from '../../infrastructure/datasource/persona.datasource.impl';
+import { PersonaRepositoryImpl } from '../../infrastructure/repositories/personas.repository.impl';
 
 export class PersonaRoutes {
 
@@ -9,9 +10,11 @@ export class PersonaRoutes {
   
       const router = Router();
   
-      const personaController = new PersonasController();
+      const datasource = new PersonaDatasourceImpl();
+      const personaRepository = new PersonaRepositoryImpl(datasource);
+      const personaController = new PersonasController(personaRepository);
   
-      router.get('/', personaController.getPersonaById );
+      router.get('/', personaController.getPersonas);
       router.get('/:id', personaController.getPersonaById );
       
       router.post('/', personaController.createPersona );

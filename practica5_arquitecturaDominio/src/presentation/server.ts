@@ -1,4 +1,5 @@
 import express, { Router } from 'express';
+import compression from 'compression';
 import path from 'path';
 
 interface Options {
@@ -47,7 +48,7 @@ export class Server {
     
 
     this.app.listen(this.port, () => {
-      console.log(`Server running on port ${ this.port }`);
+      console.log(`Servidor escuchando en el puerto http://localhost:${ this.port }`);
     });
 
   }
