@@ -14,7 +14,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Server = void 0;
 const express_1 = __importDefault(require("express"));
+const compression_1 = __importDefault(require("compression"));
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
 const path_1 = __importDefault(require("path"));
+// Importa el router general
+const routes_1 = require("./routes"); // Importa AppRoutes con nombre
+const app = (0, express_1.default)();
+app.use((0, compression_1.default)());
+app.use(express_1.default.json());
 class Server {
     constructor(options) {
         this.app = (0, express_1.default)();
@@ -37,6 +45,7 @@ class Server {
                 const indexPath = path_1.default.join(__dirname + `../../../${this.publicPath}/index.html`);
                 res.sendFile(indexPath);
             });
+            app.use('/api', routes_1.AppRoutes.routes);
             this.app.listen(this.port, () => {
                 console.log(`Servidor escuchando en el puerto http://localhost:${this.port}`);
             });

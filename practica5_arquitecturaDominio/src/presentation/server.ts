@@ -1,6 +1,16 @@
-import express, { Router } from 'express';
+import express,{Router} from 'express';
 import compression from 'compression';
+import dotenv from 'dotenv';
+dotenv.config();
 import path from 'path';
+
+// Importa el router general
+import { AppRoutes } from './routes'; // Importa AppRoutes con nombre
+
+const app = express();
+app.use(compression());
+app.use(express.json());
+
 
 interface Options {
   port: number;
@@ -46,6 +56,7 @@ export class Server {
       res.sendFile(indexPath);
     });
     
+    app.use('/api', AppRoutes.routes);
 
     this.app.listen(this.port, () => {
       console.log(`Servidor escuchando en el puerto http://localhost:${ this.port }`);
