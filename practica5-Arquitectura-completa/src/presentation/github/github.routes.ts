@@ -6,7 +6,7 @@ import { GitHubRepository } from '../../infrastructure/repositories/github.repos
 export class GitHubRoutes {
   static get routes(): Router {
     const router = Router();
-
+    
     const githubToken = process.env.GITHUB_TOKEN || '';
     const datasource = new GitHubDatasource(githubToken);
     const githubRepository = new GitHubRepository(datasource);
