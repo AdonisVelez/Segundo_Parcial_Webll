@@ -1,0 +1,93 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Encuesta {
+  id: ID!
+  descripcion: String!
+  detalles: String!
+  estado: String!
+}
+
+type Persona {
+  id: Int!
+  nombre: String!
+  identificacion: String!
+  estado: String!
+}
+
+type Registro {
+  id: Int!
+  fecha: DateTime!
+  hora: DateTime!
+  ubicacion: String!
+  estado: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  registro(id: Int!): Registro!
+  encuesta(id: Int!): Encuesta!
+  persona(id: Int!): Persona!
+}
+
+type Mutation {
+  createRegistro(createRegistroInput: CreateRegistroInput!): Registro!
+  updateRegistro(updateRegistroInput: UpdateRegistroInput!): Registro!
+  removeRegistro(id: Int!): Registro!
+  createEncuesta(createEncuestaInput: CreateEncuestaInput!): Encuesta!
+  updateEncuesta(updateEncuestaInput: UpdateEncuestaInput!): Encuesta!
+  removeEncuesta(id: Int!): Encuesta!
+  createPersona(createPersonaInput: CreatePersonaInput!): Persona!
+  updatePersona(updatePersonaInput: UpdatePersonaInput!): Persona!
+  removePersona(id: Int!): Persona!
+}
+
+input CreateRegistroInput {
+  fecha: DateTime!
+  hora: DateTime!
+  ubicacion: String!
+  personaid: Int!
+  encuestaid: Int!
+  estado: String!
+}
+
+input UpdateRegistroInput {
+  fecha: DateTime
+  hora: DateTime
+  ubicacion: String
+  personaid: Int
+  encuestaid: Int
+  estado: String
+  id: Int!
+}
+
+input CreateEncuestaInput {
+  descripcion: String!
+  detalles: String!
+  estado: String!
+}
+
+input UpdateEncuestaInput {
+  descripcion: String
+  detalles: String
+  estado: String
+  id: ID!
+}
+
+input CreatePersonaInput {
+  nombre: String!
+  identificacion: String!
+  estado: String!
+}
+
+input UpdatePersonaInput {
+  nombre: String
+  identificacion: String
+  estado: String
+  id: Int!
+}
