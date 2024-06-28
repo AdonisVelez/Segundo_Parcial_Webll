@@ -17,8 +17,9 @@ export class PersonaService {
     return this.personaRepository.save(persona);
   }
 
-  async findAll(): Promise<Persona[]> {
-    return this.personaRepository.find();
+  async findAll(estado: string): Promise<Persona[]> {
+    const whereCondition = estado === 'todos' ? {} : { estado };
+    return this.personaRepository.find({ where: whereCondition });
   }
 
   async findOne(id: number): Promise<Persona> {

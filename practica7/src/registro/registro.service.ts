@@ -36,10 +36,11 @@ export class RegistroService {
     return this.toResponseDto(savedPreparacion);
   }
   
-  async findAll(): Promise<any[]> {
-    const registro = await this.registroRepository.find({ relations: ['persona', 'encuesta'] });
-    return registro.map(registro => this.toResponseDto(registro));
+  async findAll(estado: string): Promise<Registro[]> {
+    const whereCondition = estado === 'todos' ? {} : { estado };
+    return this.registroRepository.find({ where: whereCondition });
   }
+  
 
   async findOne(id: number): Promise<any> {
     const registro = await this.registroRepository.findOne({

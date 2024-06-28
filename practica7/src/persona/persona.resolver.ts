@@ -13,9 +13,9 @@ export class PersonaResolver {
     return this.personaService.create(createPersonaInput);
   }
 
-  @Query(() => [Persona], { name: 'persona' })
-  findAll() {
-    return this.personaService.findAll();
+  @Query(() => [Persona], { name: 'personas' })
+  findAll(@Args('estado', { type: () => String, nullable: true }) estado?: string) {
+    return this.personaService.findAll(estado);
   }
 
   @Query(() => Persona, { name: 'persona' })

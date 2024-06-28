@@ -17,8 +17,9 @@ export class EncuestaService {
     return this.encuestaRepository.save(encuesta);
   }
 
-  async findAll(): Promise<Encuesta[]> {
-    return this.encuestaRepository.find();
+  async findAll(estado: string): Promise<Encuesta[]> {
+    const whereCondition = estado === 'todos' ? {} : { estado };
+    return this.encuestaRepository.find({ where: whereCondition });
   }
 
   async findOne(id: number): Promise<Encuesta> {

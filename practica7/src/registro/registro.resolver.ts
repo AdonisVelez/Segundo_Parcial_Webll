@@ -13,9 +13,9 @@ export class RegistroResolver {
     return this.registroService.create(createRegistroInput);
   }
 
-  @Query(() => [Registro], { name: 'registro' })
-  findAll() {
-    return this.registroService.findAll();
+  @Query(() => [Registro], { name: 'registros' })
+  findAll(@Args('estado', { type: () => String, nullable: true }) estado: string) {
+    return this.registroService.findAll(estado);
   }
 
   @Query(() => Registro, { name: 'registro' })

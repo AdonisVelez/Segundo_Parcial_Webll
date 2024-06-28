@@ -13,9 +13,9 @@ export class EncuestaResolver {
     return this.encuestaService.create(createEncuestaInput);
   }
 
-  @Query(() => [Encuesta], { name: 'encuesta' })
-  findAll() {
-    return this.encuestaService.findAll();
+  @Query(() => [Encuesta], { name: 'encuestas' })
+  findAll(@Args('estado', { type: () => String, nullable: true }) estado?: string) {
+    return this.encuestaService.findAll(estado);
   }
 
   @Query(() => Encuesta, { name: 'encuesta' })
